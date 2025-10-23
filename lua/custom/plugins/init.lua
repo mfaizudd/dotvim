@@ -66,4 +66,5 @@ return {
       load_paths = {},
     },
   },
+  { 'nvim-treesitter/nvim-treesitter-context' },
 }
