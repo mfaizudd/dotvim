@@ -67,4 +67,5 @@ return {
     },
   },
   { 'nvim-treesitter/nvim-treesitter-context' },
+  { 'wakatime/vim-wakatime', lazy = false },
 }
