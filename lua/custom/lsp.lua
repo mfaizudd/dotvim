@@ -23,7 +23,7 @@ local vue_ls_config = {}
 -- nvim 0.11 or above
 vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('ts_ls', ts_ls_config)
-vim.lsp.enable { 'ts_ls', 'vue_ls' } -- If using `ts_ls` replace `vtsls` to `ts_ls`
+-- vim.lsp.enable { 'ts_ls', 'vue_ls' } -- If using `ts_ls` replace `vtsls` to `ts_ls`
 
 -- OMNISHARP
 local roslyn_config = {
@@ -58,7 +58,7 @@ local roslyn_config = {
       EnableImportCompletion = true,
       -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
       -- true
-      AnalyzeOpenDocumentsOnly = true,
+      AnalyzeOpenDocumentsOnly = false,
     },
     Sdk = {
       -- Specifies whether to include preview versions of the .NET SDK when
@@ -68,3 +68,17 @@ local roslyn_config = {
   },
 }
 vim.lsp.config('omnisharp', roslyn_config)
+vim.lsp.config('roslyn', {
+  on_attach = function()
+    print 'Roslyn attached'
+  end,
+  settings = {
+    ['csharp|inlay_hints'] = {
+      csharp_enable_inlay_hints_for_implicit_object_creation = true,
+      csharp_enable_inlay_hints_for_implicit_variable_types = true,
+    },
+    ['csharp|code_lens'] = {
+      dotnet_enable_references_code_lens = true,
+    },
+  },
+})

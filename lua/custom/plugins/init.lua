@@ -68,4 +68,20 @@ return {
   },
   { 'nvim-treesitter/nvim-treesitter-context' },
   { 'wakatime/vim-wakatime', lazy = false },
+  { 'Decodetalkers/csharpls-extended-lsp.nvim' },
+  {
+    'seblyng/roslyn.nvim',
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
+      choose_target = function(target)
+        return vim.iter(target):find(function(item)
+          if string.match(item, 'PAC.sln') then
+            return item
+          end
+        end)
+      end,
+    },
+  },
 }
