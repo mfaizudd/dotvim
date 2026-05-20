@@ -99,15 +99,15 @@ do
   vim.g.maplocalleader = ' '
 
   -- Set to true if you have a Nerd Font installed and selected in the terminal
-  vim.g.have_nerd_font = false
+  vim.g.have_nerd_font = true
 
--- Make line numbers default
-vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
-vim.o.relativenumber = true
+  -- Make line numbers default
+  vim.o.number = true
+  -- You can also add relative line numbers, to help with jumping.
+  --  Experiment for yourself to see if you like it!
+  vim.o.relativenumber = true
 
-vim.o.colorcolumn = '80'
+  vim.o.colorcolumn = '80'
 
   -- Make line numbers default
   vim.o.number = true
@@ -182,23 +182,20 @@ vim.o.colorcolumn = '80'
   --  See `:help hlsearch`
   vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- OSC Yank
-vim.keymap.set('n', '<leader>y', '<cmd>OSCYankVisual<cr>', { desc = 'Yank to system clipboard' })
+  -- OSC Yank
+  vim.keymap.set('n', '<leader>y', '<cmd>OSCYankVisual<cr>', { desc = 'Yank to system clipboard' })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
--- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+  -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+  -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+  -- is not what someone will guess without a bit more experience.
+  --
+  -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+  -- or just use <C-\><C-n> to exit terminal mode
+  -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-    -- Can switch between these as you prefer
-    virtual_text = true, -- Text shows up at the end of the line
-    virtual_lines = false, -- Text shows up underneath the line, with virtual lines
-
-    -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-    jump = {
+  -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+  jump =
+    {
       on_jump = function(_, bufnr)
         vim.diagnostic.open_float {
           bufnr = bufnr,
@@ -207,9 +204,8 @@ vim.keymap.set('n', '<leader>y', '<cmd>OSCYankVisual<cr>', { desc = 'Yank to sys
         }
       end,
     },
-  }
-
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+    -- }
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
   -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
   -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -904,7 +900,20 @@ do
   vim.pack.add { { src = gh 'nvim-treesitter/nvim-treesitter', version = 'main' } }
 
   -- Ensure basic parsers are installed
-  local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+  local parsers = {
+    'bash',
+    'c',
+    'diff',
+    'html',
+    'lua',
+    'luadoc',
+    'markdown',
+    'markdown_inline',
+    'query',
+    'vim',
+    'vimdoc',
+    'c_sharp',
+  }
   require('nvim-treesitter').install(parsers)
 
   ---@param buf integer
@@ -956,53 +965,53 @@ end
 -- SECTION 9: OPTIONAL EXAMPLES / NEXT STEPS
 -- kickstart.plugins.* examples
 -- ============================================================
-do
-  -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
-  -- init.lua. If you want these files, they are in the repository, so you can just download them and
-  -- place them in the correct locations.
+-- do
+-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
+-- init.lua. If you want these files, they are in the repository, so you can just download them and
+-- place them in the correct locations.
 
-  -- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
-  --
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
-  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+-- NOTE: Next step on your Neovim journey: Add/Configure additional plugins for Kickstart
+--
+--  Here are some example plugins that I've included in the Kickstart repository.
+--  Uncomment any of the lines below to enable them (you will need to restart nvim).
+--
+require 'kickstart.plugins.debug'
+require 'kickstart.plugins.indent_line'
+require 'kickstart.plugins.lint'
+require 'kickstart.plugins.autopairs'
+require 'kickstart.plugins.neo-tree'
+require 'kickstart.plugins.gitsigns' -- adds gitsigns recommend keymaps
 
-  -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --
-  --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'custom.plugins' },
+-- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
+--
+--  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+require 'custom.plugins'
 
-  -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
-  -- Or use telescope!
-  -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
-  -- you can continue same window with `<space>sr` which resumes last telescope search
-}, {
-  ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
+-- Or use telescope!
+-- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
+-- you can continue same window with `<space>sr` which resumes last telescope search
+-- }, {
+--   ui = {
+--     -- If you are using a Nerd Font: set icons to an empty table which will use the
+--     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+--     icons = vim.g.have_nerd_font and {} or {
+--       cmd = '⌘',
+--       config = '🛠',
+--       event = '📅',
+--       ft = '📂',
+--       init = '⚙',
+--       keys = '🗝',
+--       plugin = '🔌',
+--       runtime = '💻',
+--       require = '🌙',
+--       source = '📄',
+--       start = '🚀',
+--       task = '📌',
+--       lazy = '💤 ',
+--     },
+--   },
+-- })
 require 'custom.lsp'
 require 'custom.harpoon_setup'
 

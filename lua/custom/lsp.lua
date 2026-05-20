@@ -23,6 +23,11 @@ local vue_ls_config = {}
 -- nvim 0.11 or above
 vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('ts_ls', ts_ls_config)
+vim.diagnostic.config({
+  -- Can switch between these as you prefer
+  virtual_text = false, -- Text shows up at the end of the line
+  virtual_lines = true, -- Text shows up underneath the line, with virtual lines
+})
 -- vim.lsp.enable { 'ts_ls', 'vue_ls' } -- If using `ts_ls` replace `vtsls` to `ts_ls`
 
 -- OMNISHARP
