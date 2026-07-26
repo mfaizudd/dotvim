@@ -688,11 +688,13 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    -- clangd = {},
+    clangd = {},
     gopls = {},
     ocamllsp = {},
     -- pyright = {},
-    -- rust_analyzer = {},
+    rust_analyzer = {},
+    ts_ls = {},
+    vue_ls = {},
     --
     -- Some languages (like typescript) have entire language plugins that can be useful:
     --    https://github.com/pmizio/typescript-tools.nvim
