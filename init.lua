@@ -689,7 +689,8 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
     -- clangd = {},
-    -- gopls = {},
+    gopls = {},
+    ocamllsp = {},
     -- pyright = {},
     -- rust_analyzer = {},
     --
@@ -1014,6 +1015,4 @@ require 'custom.plugins'
 -- })
 require 'custom.lsp'
 require 'custom.harpoon_setup'
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require 'custom.autocmd'
