@@ -1,3 +1,7 @@
+local function enable_server(name)
+  if vim.fn.executable(name) == 1 then vim.lsp.enable(name) end
+end
+
 -- VUE LSP
 local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
 local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
@@ -23,11 +27,11 @@ local vue_ls_config = {}
 -- nvim 0.11 or above
 vim.lsp.config('vue_ls', vue_ls_config)
 vim.lsp.config('ts_ls', ts_ls_config)
-vim.diagnostic.config({
+vim.diagnostic.config {
   -- Can switch between these as you prefer
   virtual_text = true, -- Text shows up at the end of the line
   virtual_lines = false, -- Text shows up underneath the line, with virtual lines
-})
+}
 -- vim.lsp.enable { 'ts_ls', 'vue_ls' } -- If using `ts_ls` replace `vtsls` to `ts_ls`
 
 -- OMNISHARP
@@ -74,9 +78,7 @@ local roslyn_config = {
 }
 vim.lsp.config('omnisharp', roslyn_config)
 vim.lsp.config('roslyn', {
-  on_attach = function()
-    print 'Roslyn attached'
-  end,
+  on_attach = function() print 'Roslyn attached' end,
   settings = {
     -- ['csharp|background_analysis'] = {
     --   dotnet_analyzer_diagnostics_scope = 'fullSolution',
@@ -104,14 +106,15 @@ vim.lsp.config['ocamllsp'] = {
     'ocaml.menhir',
     'ocaml.ocamllex',
     'dune',
-    'reason'
+    'reason',
   },
   root_markers = {
     { 'dune-project', 'dune-workspace' },
-    { "*.opam", "esy.json", "package.json" },
-    '.git'
+    { '*.opam', 'esy.json', 'package.json' },
+    '.git',
   },
   settings = {},
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
+enable_server 'intelephense'
