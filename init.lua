@@ -735,8 +735,8 @@ do
     ocamllsp = {},
     neocmake = {},
     -- pyright = {},
-+    rust_analyzer = {},
-+    vue_ls = {},
+    rust_analyzer = {},
+    vue_ls = {},
      --
      -- Some languages (like typescript) have entire language plugins that can be useful:
      --    https://github.com/pmizio/typescript-tools.nvim
@@ -1042,7 +1042,7 @@ do
   require 'kickstart.plugins.lint'
   require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
-  require 'kickstart.plugins.gitsigns' -- adds gitsigns recommend keymaps
+  -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommend keymaps
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
