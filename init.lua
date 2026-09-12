@@ -748,6 +748,9 @@ do
 
   -- Automatically install LSPs and related tools to stdpath for Neovim
   require('mason').setup {}
+  require('mason-lspconfig').setup {
+    automatic_enable = true, -- calls vim.lsp.enable() only for mason-installed servers
+  }
 
   -- Ensure the servers and tools above are installed
   --

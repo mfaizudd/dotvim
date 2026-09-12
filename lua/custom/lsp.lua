@@ -1,7 +1,3 @@
-local function enable_server(name)
-  if vim.fn.executable(name) == 1 then vim.lsp.enable(name) end
-end
-
 -- VUE LSP
 local vue_language_server_path = vim.fn.stdpath 'data' .. '/mason/packages/vue-language-server/node_modules/@vue/language-server'
 local tsserver_filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
@@ -116,5 +112,3 @@ vim.lsp.config['ocamllsp'] = {
   settings = {},
   capabilities = capabilities,
 }
-
-enable_server 'intelephense'
