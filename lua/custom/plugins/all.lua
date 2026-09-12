@@ -4,7 +4,7 @@ vim.pack.add {
   { src = 'https://github.com/Hoffs/omnisharp-extended-lsp.nvim' },
   { src = 'https://github.com/ThePrimeagen/harpoon' },
   { src = 'https://github.com/tpope/vim-abolish' },
-  { src = 'https://github.com/sindrets/diffview.nvim' },
+  { src = 'https://github.com/dlyongemallo/diffview-plus.nvim' },
   { src = 'https://github.com/ojroques/vim-oscyank' },
   { src = 'https://github.com/farmergreg/vim-lastplace' },
   { src = 'https://github.com/kdheepak/lazygit.nvim' },
