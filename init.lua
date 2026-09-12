@@ -796,17 +796,10 @@ do
     default_format_opts = {
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
-    formatters = {
-      duster = {
-        command = 'duster',
-        args = { 'fix', '$FILENAME' },
-        stdin = false,
-      },
-    },
     -- You can also specify external formatters in here.
     formatters_by_ft = {
-      php = { 'duster' },
-      blade = { 'duster', 'blade-formatter' },
+      php = { 'php-cs-fixer' },
+      blade = { 'blade-formatter' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
