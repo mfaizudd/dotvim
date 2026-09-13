@@ -109,7 +109,6 @@ do
 
   vim.o.colorcolumn = '80'
 
-
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
 
@@ -737,11 +736,11 @@ do
     -- pyright = {},
     rust_analyzer = {},
     vue_ls = {},
-     --
-     -- Some languages (like typescript) have entire language plugins that can be useful:
-     --    https://github.com/pmizio/typescript-tools.nvim
-     --
-     -- But for many setups, the LSP (`ts_ls`) will work just fine
+    --
+    -- Some languages (like typescript) have entire language plugins that can be useful:
+    --    https://github.com/pmizio/typescript-tools.nvim
+    --
+    -- But for many setups, the LSP (`ts_ls`) will work just fine
     -- ts_ls = {},
     ts_ls = {},
     --
@@ -850,6 +849,8 @@ do
     formatters_by_ft = {
       php = { 'php-cs-fixer' },
       blade = { 'blade-formatter' },
+      kdl = { 'kdlfmt' },
+      json = { 'prettierd' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
@@ -1059,4 +1060,3 @@ do
   -- require 'custom.plugins.ui'
   -- require 'custom.plugins.git'
 end
-
