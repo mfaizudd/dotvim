@@ -168,6 +168,14 @@ do
   -- instead raise a dialog asking if you wish to save the current file(s)
   -- See `:help 'confirm'`
   vim.o.confirm = true
+
+  -- Never let .editorconfig's `end_of_line` flip 'fileformat'. Repos often declare
+  -- crlf/lf that the files themselves don't follow (the pac repo declares crlf for
+  -- *.cs while ~84% of its .cs files are stored with LF), and forcing the option
+  -- rewrites every line of such a file the moment you save it. Ignoring the property
+  -- leaves Neovim's own 'fileformats' detection in charge, which preserves whatever
+  -- endings the file already has. All other editorconfig properties still apply.
+  require('editorconfig').properties.end_of_line = function() end
 end
 
 -- ============================================================
