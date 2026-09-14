@@ -17,7 +17,6 @@ vim.pack.add {
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
   { src = 'https://github.com/wakatime/vim-wakatime' },
   { src = 'https://github.com/Decodetalkers/csharpls-extended-lsp.nvim' },
-  { src = 'https://github.com/seblyng/roslyn.nvim' },
 }
 
 -- lazygit.nvim keymap
@@ -40,13 +39,3 @@ require('orgmode-babel').setup {
   load_paths = {},
 }
 
--- roslyn.nvim setup
-require('roslyn').setup {
-  choose_target = function(target)
-    return vim.iter(target):find(function(item)
-      if string.match(item, 'PAC.sln') then
-        return item
-      end
-    end)
-  end,
-}
