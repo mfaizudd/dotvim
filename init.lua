@@ -859,6 +859,7 @@ do
       blade = { 'blade-formatter' },
       kdl = { 'kdlfmt' },
       json = { 'prettierd' },
+      nix = { 'nixfmt' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
