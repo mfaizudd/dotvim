@@ -843,6 +843,9 @@ do
       local enabled_filetypes = {
         -- lua = true,
         -- python = true,
+        cmake = true,
+        nix = true,
+        cpp = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
@@ -853,6 +856,12 @@ do
     default_format_opts = {
       lsp_format = 'fallback', -- Use external formatters if configured below, otherwise use LSP formatting. Set to `false` to disable LSP formatting entirely.
     },
+    formatters = {
+      cmakelang = {
+        command = 'cmake-format',
+        args = { '$FILENAME' },
+      },
+    },
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       php = { 'php-cs-fixer' },
@@ -860,6 +869,7 @@ do
       kdl = { 'kdlfmt' },
       json = { 'prettierd' },
       nix = { 'nixfmt' },
+      cmake = { 'cmakelang' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
