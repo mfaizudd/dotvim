@@ -859,7 +859,8 @@ do
     formatters = {
       cmakelang = {
         command = 'cmake-format',
-        args = { '$FILENAME' },
+        args = { '-' },
+        stdin = true,
       },
     },
     -- You can also specify external formatters in here.
@@ -870,6 +871,7 @@ do
       json = { 'prettierd' },
       nix = { 'nixfmt' },
       cmake = { 'cmakelang' },
+      yaml = { 'yamlfmt' },
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
