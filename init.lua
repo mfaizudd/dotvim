@@ -846,6 +846,9 @@ do
         cmake = true,
         nix = true,
         cpp = true,
+        go = true,
+        vue = true,
+        ts = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }
