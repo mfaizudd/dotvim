@@ -17,6 +17,7 @@ vim.pack.add {
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
   { src = 'https://github.com/wakatime/vim-wakatime' },
   { src = 'https://github.com/Decodetalkers/csharpls-extended-lsp.nvim' },
+  { src = 'https://github.com/glacambre/firenvim' },
 }
 
 -- lazygit.nvim keymap
@@ -38,4 +39,3 @@ require('orgmode-babel').setup {
   -- paths to emacs packages to additionally load
   load_paths = {},
 }
-
